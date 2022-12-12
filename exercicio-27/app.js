@@ -146,6 +146,15 @@ console.log(infor.message());
     - Faça isso até que 7 valores truthy sejam passados.
 */
 
+const isTruthy = value => Boolean(value);
+
+const falsyValues = [false, 0, '', null, undefined, NaN];
+const truthyValues = [true, '0', () => {}, {}, [], -1, 'false'];
+
+falsyValues.forEach(falsyValue => console.log(isTruthy(falsyValue)));
+truthyValues.forEach(truthyValue => console.log(isTruthy(truthyValue)));
+
+
 /*
   07
 
@@ -189,4 +198,4 @@ const myBooks = (bookName) => {
   return books[bookName] || books;
 };
 
-console.log(myBooks());
+console.log(myBooks(''));
