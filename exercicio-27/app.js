@@ -50,6 +50,17 @@ request.send();
     - Quantos metros você caminhou (number iniciado em 0).
 */
 
+const infor = {
+  name: 'Emanuel',
+  sobrenome: 'Azevedo',
+  sexo: 'Masculino',
+  idade: 22,
+  altura: 1.70,
+  peso: 68,
+  andando: false,
+  metros: 0
+}
+
 /*
   03
 
@@ -58,6 +69,16 @@ request.send();
   - A cada vez que o método é invocado, 1 deve ser somado à idade atual;
   - Após criar o método, adicione 5 anos à idade do objeto.
 */
+
+infor.addAge = () => {
+  return infor.idade++;
+}
+
+for(let i = 0; i < 5; i++){
+  infor.addAge();
+}
+
+console.log(infor.addAge());
 
 /*
   04
@@ -69,6 +90,19 @@ request.send();
   - Após criar o método, faça a pessoa caminhar alguns metros, invocando o 
     método 4x, com diferentes metragens passadas por parâmetro.
 */
+
+infor.walking = m => {
+  infor.metros += m;
+  infor.andando = true;
+}
+
+const dados = [5, 10 , 2, 8];
+dados.forEach( metragem => {
+  infor.walking(metragem);
+});
+
+console.log(infor.metros, infor.andando);
+
 
 /*
   05
@@ -86,6 +120,19 @@ request.send();
     - Se a quantidade de metros caminhados for 1, substitua "metros" por 
       "metro", no singular.
 */
+
+const pluralOrSingular = (quantity, singular, plural) => quantity === 1 ? singular : plural
+
+const verifyGenre = () => infor.sexo === 'Masculino' ? 'o' : 'a'; 
+const verifyAge = pluralOrSingular(infor.idade, 'ano', 'anos');
+const verifyMeters = pluralOrSingular(infor.metros, 'metro', 'metros');
+
+infor.message = () => {
+  return `Oi. Eu sou ${verifyGenre()} ${infor.name}, tenho ${infor.idade} ${verifyAge}, ${infor.altura} metros de altura, 
+  peso ${infor.peso} quilos e, só hoje, eu já caminhei ${infor.metros} ${verifyMeters}.`
+}
+
+console.log(infor.message());
 
 /*
   06
@@ -117,3 +164,29 @@ request.send();
 
   Dica: propriedades de objetos podem ser declaradas como strings.
 */
+
+const myBooks = (bookName) => {
+  const books = {
+    'Um visitante inesperado':{
+      page: 200,
+      author: 'Agatha Christie',
+      editor: 'Agatha'
+    },
+
+    'O Assassinato No Expresso Oriente':{
+      page: 220,
+      author: 'Agatha Christie',
+      editor: 'Agatha'
+    },
+
+    'Um convite para um homicidio':{
+      page: 180,
+      author: 'Agatha Christie',
+      editor: 'Agatha'
+    }
+  }
+  
+  return books[bookName] || books;
+};
+
+console.log(myBooks());
