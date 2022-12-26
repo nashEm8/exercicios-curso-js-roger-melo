@@ -12,6 +12,12 @@
     versão deve fazer o mesmo que a função anterior faz, mas de forma diferente.
 */
 
+const myString = word => {
+  return word.split('').reverse().join('');
+}
+
+console.log(myString('Flamengo'));
+
 /*
   02
   
@@ -19,15 +25,8 @@
 */
 
 const numbers = [5, 20, 7, 32, 47, 15, 83, 91, 27, 33]
-let foundNumber = false
+console.log(numbers.includes(15))
 
-numbers.forEach(number => {
-  if (number === 15) {
-    foundNumber = true
-  }
-})
-
-console.log(foundNumber)
 
 /*
   03
