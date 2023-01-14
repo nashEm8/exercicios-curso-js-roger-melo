@@ -180,11 +180,11 @@ textArea.addEventListener('input', event => {
     reduce e um link para a documentação do método no MDN.
 */
 
-const reduce = (arr, func, valorInitial, index) => {
+const reduce = (arr, func, valorInitial) => {
   let acc = valorInitial;
 
-  arr.forEach((item, index) => {
-    acc = func(item, acc, index);
+  arr.forEach((item, index, array) => {
+    acc = func(acc, item, index, array);
   })
 
   return acc;
@@ -193,3 +193,6 @@ const reduce = (arr, func, valorInitial, index) => {
 
 console.log(reduce([1,2,3], (acc, item) => acc + item, 0));
 console.log(reduce([2, 3, 4], (acc, item) => acc + item, 0));
+console.log(reduce([1, 2], (acc, item) => { acc['number-' + item] = item 
+return acc }, {}));
+console.log(reduce([1, 2], (acc, item, index, array) => acc + array[index], 0));
