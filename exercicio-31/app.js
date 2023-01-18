@@ -20,3 +20,55 @@
       listados na documentação: https://developers.giphy.com/docs/api/endpoint#search
   - Ignore os avisos no console. Para limpá-lo, pressione "ctrl + L".
 */
+
+const form = document.querySelector('form');
+const showGif = document.querySelector('div');
+
+const api_key = "3OCShDUNie0iCsbgQuW1zn7oHzazqSyl";
+
+const getGifUrl = gifName =>
+ `https://api.giphy.com/v1/gifs/search?apikey=${api_key}&limit=1&q=${gifName}`;
+
+ const generateImg = (downsizedGifUrl, gifData) => {
+  const img = document.createElement('img')
+
+  img.setAttribute('src', downsizedGifUrl);
+  img.setAttribute('alt', gifData.data[0].title)
+
+  return img;
+}
+
+const fecthGif = async inputValue => {
+  try {
+    const gifUrl = getGifUrl(inputValue);
+    const response = await fetch(gifUrl)
+      
+      if(!response.ok){
+        throw new Error('Não foi possível obter os dados!');
+      }
+      return response.json();
+    } catch(error){
+    console.log(`Error: ${error.message}`);
+  }
+}
+
+const insertIntoDom = async inputValue => {
+      const gifData = await fecthGif(inputValue);
+
+      if(gifData){
+        const downsizedGifUrl = gifData.data[0].images.downsized.url;
+        const img = generateImg(downsizedGifUrl, gifData);
+        showGif.insertAdjacentElement('afterbegin', img);
+
+        form.reset();
+      }
+}
+
+form.addEventListener('submit', event => {
+  event.preventDefault();
+
+  const inputValue = event.target.search.value;
+
+  insertIntoDom(inputValue);
+}); 
+
