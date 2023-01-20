@@ -12,6 +12,12 @@ const diceFilms = async () => {
 			<li>
 				<h4>${film.titulo}</h4>
 				<img src = "${film.avatar}"> 
+				<div class="options">
+					<button>Assistir</button>
+					<a href="" onclick = "favorite()"><i class="fa-regular fa-heart"></i></a>
+					<a href="" onclick = "favorite()"><i class="fa-regular fa-thumbs-up"></i></a>
+					<a href="" onclick = "favorite()"><i class="fa-regular fa-thumbs-down"></i></a>
+				</div>
 			</li>
 			`
 		})
@@ -22,3 +28,5 @@ const diceFilms = async () => {
 }	
 
 diceFilms();
+
+//<i class="fa-solid fa-heart"></i>

@@ -1,12 +1,46 @@
 *{
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
 }
 
 body{
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+}
+
+.header{
+	width: 100%;
+	background-color: #171717;
+}
+
+.topo{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: auto;
+	max-width: 1120px;
+}
+
+.topo .logo img{
+	width: 120px
+}
+
+.menu ul{
+	display: flex;
+	list-style: none;
+}
+
+.menu ul li a{
+	color: #02f1f3;
+	text-decoration: none;
+	margin-left: 20px;
+}
+
+.films{
+	margin-top: 50px;
 }
 
 .list{
@@ -21,17 +55,45 @@ body{
 	height: 400px;
 	list-style: none;
 	padding: 20px;
-	margin: 10px 20px;
+	margin: 10px 20px 60px 20px;
 }
 
 .list li h4{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 50px;
+	width: 200px;
 	font-size: 18px;
 	font-weight: 900px;
 	font-family: arial;
 	margin-bottom: 15px;
+	text-align: center;
 }
 
 .list img{
 	width: 200px;
 	height: 300px;
+}
+
+.options{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 10px 0;
+}
+
+.options button{
+	border: 1px solid #02f1f3;
+	background-color: #02f1f3;
+	color: #000;
+	padding: 5px 10px;
+	border-radius: 10px;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+.options a{
+	font-size: 18px;
+	color: #000;
 }
